@@ -1,13 +1,7 @@
-button#changeColor {
-  height: 30px;
-  width: 30px;
-  outline: none;
-  margin: 10px;
-  border: none;
-  border-radius: 2px;
-}
-
-button#changeColor.current {
-  box-shadow: 0 0 0 2px white,
-              0 0 0 4px black;
+button {
+  background-color: darkblue;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
 }
