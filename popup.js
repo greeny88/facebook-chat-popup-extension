@@ -1,24 +1,59 @@
-// Initialize butotn with users's prefered color
-let changeColor = document.getElementById("changeColor");
+const commentPopout = document.getElementById("commentPopout");
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
-
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+commentPopout.addEventListener("click", async () => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    function: setPageBackgroundColor,
+    function: popoutLiveStreamComments,
   });
 });
 
-// The body of this function will be execuetd as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    document.body.style.backgroundColor = color;
-  });
+function popoutLiveStreamComments() {
+  const listOfElementsToRemove = [
+    'roauwr9f n7fi1qx3 byvelhso hzruof5a pmk7jnqg j9ispegn kr520xx4',
+    'pfnyh3mw km676qkl du4w35lb cwj9ozl2 discj3wi hv4rvrfc ihqw7lf3 dati1w0a',
+    'discj3wi dati1w0a qt6c0cv9 hv4rvrfc pfnyh3mw cbu4d94t j83agx80'
+  ];
+
+  for (let elm of document.getElementsByTagName('div')) {
+    if (elm.getAttribute('role') === 'banner' || elm.getAttribute('role') === 'main') {
+      elm.setAttribute('style', 'display:none;');
+      // elm.remove();
+    }
+    if (elm.getAttribute('role') === 'complementary') {
+      for (let classes of listOfElementsToRemove) {
+        try {
+          const innerElm = elm.getElementsByClassName(classes)[0];
+          innerElm.setAttribute('style', 'display:none;');
+        } catch {
+          console.error('Error removing inner element');
+        }
+      }
+    }
+  }
+
+  // const listOfElementsToRemove = [
+  //   'roauwr9f n7fi1qx3 byvelhso hzruof5a pmk7jnqg j9ispegn kr520xx4',
+  //   'pfnyh3mw km676qkl du4w35lb cwj9ozl2 discj3wi hv4rvrfc ihqw7lf3 dati1w0a',
+  //   'discj3wi dati1w0a qt6c0cv9 hv4rvrfc pfnyh3mw cbu4d94t j83agx80'
+  // ];
+  // try {
+  //   const videoElement = document.getElementsByClassName('nnvw5wor')[0];
+  //   videoElement.remove();
+  // } catch {
+  //   console.error();
+  // }
+  // try {
+  //   const videoDescriptionElement = document.getElementsByClassName('discj3wi dati1w0a qt6c0cv9 hv4rvrfc pfnyh3mw cbu4d94t j83agx80')[0];
+  //   videoDescriptionElement.remove();
+  // } catch {
+  //   console.error();
+  // }
+  // try {
+  //   const likeElement = document.getElementsByClassName('s1tcr66n')[0];
+  //   likeElement.remove();
+  // } catch {
+  //   console.error();
+  // } 
 }
