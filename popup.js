@@ -16,7 +16,11 @@ function popoutLiveStreamComments() {
     'roauwr9f n7fi1qx3 byvelhso hzruof5a pmk7jnqg j9ispegn kr520xx4',
     'pfnyh3mw km676qkl du4w35lb cwj9ozl2 discj3wi hv4rvrfc ihqw7lf3 dati1w0a',
     'discj3wi dati1w0a qt6c0cv9 hv4rvrfc pfnyh3mw cbu4d94t j83agx80',
-    's1tcr66n'
+    's1tcr66n',
+    'x78zum5 xdt5ytf x2lah0s xyamay9 x1pi30zi x18d9i69 x1swvt13',
+    'xdppsyt',
+    'x6s0dn4 x78zum5 x2lah0s x1qughib xdj266r xktsk01 xat24cr x1d52u69',
+    'xr9p91e xds687c x1s65kcs x47corl x10l6tqk x17qophe x13vifvy'
   ];
 
   for (let elm of document.getElementsByTagName('div')) {
@@ -43,6 +47,13 @@ function popoutLiveStreamComments() {
       try {
         const extraElm3 = elm.getElementsByClassName('rpm2j7zs k7i0oixp gvuykj2m j83agx80 cbu4d94t ni8dbmo4 du4w35lb q5bimw55 ofs802cu pohlnb88 dkue75c7 mb9wzai9 d8ncny3e buofh1pr g5gj957u tgvbjcpo l56l04vs r57mb794 kh7kg01d eg9m0zos c3g1iek1 l9j0dhe7 k4xni2cv o36gj0jk')[0];
         extraElm3.setAttribute('style', 'width: 100%;');
+      } catch {
+        console.error('Error resetting extra element three attributes.');
+      }
+
+      try {
+        const extraElm4 = elm.getElementsByClassName('xb57i2i x1q594ok x5lxg6s x78zum5 xdt5ytf x6ikm8r x1ja2u2z x1pq812k x1rohswg xfk6m8 x1yqm8si xjx87ck x1l7klhg x1iyjqo2 xs83m0k x2lwn1j xx8ngbg xwo3gff x1oyok0e x1odjw0f x1e4zzel x1n2onr6 xq1qtft x1cvmir6')[0];
+        extraElm4.setAttribute('style', 'width: 98%;');
       } catch {
         console.error('Error resetting extra element three attributes.');
       }
